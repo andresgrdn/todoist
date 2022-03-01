@@ -13,10 +13,14 @@ boton_agregar_tarea.addEventListener("click", agregarTareaNueva);
 /**
  * Callbacks para funcionalidades
  */
+
+/**
+ * Agrega una nueva tarea a la lista de tareas.
+ */
 function agregarTareaNueva() {
 
     /**
-     * Verificar datos de tarea nueva
+     * Verificar datos antes de crear nueva tarea nueva
      */
     if (input_tarea_nueva.value == "") return;
     if (input_tarea_nueva.value == " ") return;
@@ -24,24 +28,40 @@ function agregarTareaNueva() {
     /**
      * Construccion de nueva tarea.
      */
-    let relleno = document.createElement("li");
-    let relleno_checkbox = document.createElement("input");
-    let relleno_texto = document.createElement("text");
+    // partes de la tarea nueva
+    let tarea_nueva = document.createElement("li");
+    let tarea_nueva_checkbox = document.createElement("input");
+    let tarea_nueva_texto = document.createElement("text");
 
-    relleno_checkbox.type = "checkbox";
+    // la tarea nueva se puede borrar a si mismo
+    tarea_nueva.addEventListener('change', removerTareaRealizada);
 
-    relleno_texto.textContent = input_tarea_nueva.value;
+    tarea_nueva_checkbox.type = "checkbox";
+    tarea_nueva_texto.textContent = input_tarea_nueva.value;
 
-    relleno.appendChild(relleno_checkbox);
-    relleno.appendChild(relleno_texto);
+    // ensamblando tarea nueva
+    tarea_nueva.appendChild(tarea_nueva_checkbox);
+    tarea_nueva.appendChild(tarea_nueva_texto);
 
     /**
-     * Agregar tarea a lista.
+     * Agregar tarea a lista de tareas
      */
-    lista_tareas.appendChild(relleno);
+    lista_tareas.appendChild(tarea_nueva);
 
     /**
      * Dejando todo listo para proxima tarea.
      */
     input_tarea_nueva.value = "";
+}
+
+/**
+ * Borra la tarea que lo invoca de la lista de
+ * tareas.
+ * @param {*} e 
+ */
+function removerTareaRealizada(e) { 
+    
+    let tarea_completada = e.target.parentElement;
+    lista_tareas.removeChild(tarea_completada)
+
 }
