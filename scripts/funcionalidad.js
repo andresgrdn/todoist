@@ -1,9 +1,18 @@
+/**
+ * Elementos del programa
+ */
 let input_tarea_nueva = document.getElementById("input_tarea_nueva");
 let boton_agregar_tarea = document.getElementById("boton_agregar_tarea");
 let lista_tareas = document.getElementById("lista_tareas");
 
+/**
+ * Listeners del programa
+ */
 boton_agregar_tarea.addEventListener("click", agregarTareaNueva);
 
+/**
+ * Callbacks para funcionalidades
+ */
 function agregarTareaNueva() {
 
     /**
