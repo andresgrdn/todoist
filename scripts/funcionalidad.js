@@ -9,6 +9,7 @@ let lista_tareas = document.getElementById("lista_tareas");
  * Listeners del programa
  */
 boton_agregar_tarea.addEventListener("click", agregarTareaNueva);
+input_tarea_nueva.addEventListener('change', agregarTareaNueva);
 
 /**
  * Callbacks para funcionalidades
