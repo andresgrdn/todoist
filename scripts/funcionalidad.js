@@ -7,6 +7,12 @@ boton_agregar_tarea.addEventListener("click", agregarTareaNueva);
 function agregarTareaNueva() {
 
     /**
+     * Verificar datos de tarea nueva
+     */
+    if (input_tarea_nueva.value == "") return;
+    if (input_tarea_nueva.value == " ") return;
+
+    /**
      * Construccion de nueva tarea.
      */
     let relleno = document.createElement("li");
